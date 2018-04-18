@@ -19,6 +19,7 @@ class Chatbar extends Component {
       this.setState({ content: e.target.value })
       if(e.key === 'Enter'){
         //somehow send state info to app.jsx
+        e.target.value = ''
         this.props.addMessage(this.state.username, this.state.content)
       }
     }

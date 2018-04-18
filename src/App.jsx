@@ -16,8 +16,19 @@ class App extends Component {
 
   addMessage(username, content) {
     const newMessage = {id: Date.now(), username, content};
-    const messages = this.state.messages.concat(newMessage)
-    this.setState({messages: messages})
+    const newMessageForServer = JSON.stringify(newMessage)
+    const messages = this.state.messages.concat(newMessage);
+    this.socket.send(newMessageForServer);
+    //this.setState({messages: messages});
+  }
+
+  componentDidMount(){
+    this.socket = new WebSocket("ws://localhost:3001/");
+    this.socket.addEventListener('message', (event) => {
+      let msgObj = JSON.parse(event.data);
+      console.log(msgObj)
+      this.setState({ messages: this.state.messages.concat(msgObj) });
+    });
   }
 
   render() {

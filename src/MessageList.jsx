@@ -4,7 +4,6 @@ import Message from './Message.jsx';
 
 function MessageList(props) {
     const messageArray = props.messages
-    console.log(messageArray)
 
     const messageItems = messageArray.map((message) =>
         <div className="message" key={message.id}>
