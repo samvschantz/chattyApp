@@ -13,7 +13,7 @@ function Message(props){
 }
 
 function Notification(props){
-    const notification = props.notification
+    const notification = props.notification;
     console.log(notification)
     return (
             <div className="notification">
@@ -23,18 +23,17 @@ function Notification(props){
 }
 
 function MessageList(props) {
-    const messageArray = props.messages
+    const messageArray = props.messages;
 
-    let messageItems = []
+    let messageItems = [];
 
     messageArray.forEach(function(element) {
         if(element.type === 'regPost'){
             messageItems.push(<Message key={element.id} message={element}/>)
         } else {
-            console.log(element.type)
             messageItems.push(<Notification key={element.id} notification={element}/>)
         }
-    })
+    });
 
     return (
       <main className="messages">
