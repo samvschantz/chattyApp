@@ -30,8 +30,8 @@ function MessageList(props) {
     messageArray.forEach(function(element) {
         if(element.type === 'regPost'){
             messageItems.push(<Message key={element.id} message={element}/>)
-            //const messageItems = messageArray.map((message) => <Message key={message.id} message={message}/>)
         } else {
+            console.log(element.type)
             messageItems.push(<Notification key={element.id} notification={element}/>)
         }
     })

@@ -35,7 +35,6 @@ class App extends Component {
       } else if (msgObj.type === 'numOnline'){
         this.setState({ numOnline: peopleObj.numOnline })
       }
-      console.log(this.state)
     });
   }
 
