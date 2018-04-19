@@ -1,18 +1,21 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700");
 
+@import url('https://fonts.googleapis.com/css?family=Raleway|Ubuntu');
+
+
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css");
 
     body {
-      background: white;
+      background: #868686;
       color: black;
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Ubuntu', sans-serif;
       font-size: 14px;
       margin: 70px 0;
     }
 
     .chatbar {
-      background: tomato;
-      border-top: 1px solid black;
+      background: #95F5FF;
+      border-top: 1px solid #717e7f;
       bottom: 0;
       display: flex;
       left: 0;
@@ -29,6 +32,7 @@
       line-height: 40px;
       margin: 5px;
       padding: 0 9px;
+      border-radius: .5em;
     }
 
     .chatbar-message {
@@ -42,6 +46,11 @@
     .message {
       display: flex;
       padding: 5px;
+      display: flex;
+      padding: 5px;
+      color: #ffffff;
+      font-family: Raleway;
+      font-size: large;
     }
 
     .message.system {
@@ -66,14 +75,24 @@
     }
 
     .navbar {
-      background: tomato;
-      border-bottom: 1px solid black;
+      background: #95F5FF;
+      color: #717e7f;
+      font-family: raleway;
+      border-bottom: 1px solid #717E7F;
       height: 60px;
       left: 0;
       padding: 0 10px;
       position: fixed;
       right: 0;
       top: 0;
+    }
+
+    .notification{
+      display: flex;
+      padding: 5px;
+      color: #D2957C;
+      font-family: raleway;
+      font-size: small;
     }
 
     .navbar-brand {
@@ -89,7 +108,7 @@
     }
 
     .numOnline{
-      color:black;
+      color: #717E7F;
       float:right;
       padding: 1.5em;
     }

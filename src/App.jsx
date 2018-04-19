@@ -12,7 +12,7 @@ class App extends Component {
             {
               currentUser: {name: "Anonymous"}, // optional. if currentUser is not defined, it means the user is Anonymous
               messages: [],
-              numOnline: 0,
+              numOnline: 1,
             };
   }
 
