@@ -33,15 +33,16 @@ class App extends Component {
       } else if (msgObj.type === 'nameChange'){
         this.setState({ messages: this.state.messages.concat(notifObj)})
       } else if (msgObj.type === 'numOnline'){
-        console.log('faihred')
-        console.log(peopleObj.numOnline)
+        this.setState({ numOnline: peopleObj.numOnline })
       }
+      console.log(this.state)
     });
   }
 
   render() {
     return (
       <div>
+        <Navbar numOnline={this.state.numOnline}/>
         <MessageList messages={this.state.messages}/>
         <Chatbar currentUser={this.state.currentUser.name} addMessage={this.addMessage.bind(this)}/>
       </div>
