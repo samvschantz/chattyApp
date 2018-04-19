@@ -5,7 +5,7 @@ A chat app that uses a Web Socket server to send messages in real time.
 
 ### Screenshot
 
-
+!["Screenshot from Chatty App"](https://github.com/samvschantz/chattyApp/blob/master/docs/Chatty%20App%20Screenshot.png)
 
 ### Usage
 
