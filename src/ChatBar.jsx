@@ -5,22 +5,24 @@ class Chatbar extends Component {
   constructor(props){
     super(props)
     this.state = {
-      username: '',
+      username: 'Anna Neemas',
       content: '',
+      type: '',
     }
     this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(e){
-    console.log(e.target.className)
     if(e.target.className === "chatbar-username"){
-      this.setState({ username: e.target.value })
-    } else if(e.target.className === "chatbar-message"){
-      this.setState({ content: e.target.value })
+      this.setState({ username: e.target.value, type: 'nameChange' })
       if(e.key === 'Enter'){
-        //somehow send state info to app.jsx
+        this.props.addMessage(this.state.username, this.state.content, this.state.type)
+      }
+    } else if(e.target.className === "chatbar-message"){
+      this.setState({ content: e.target.value, type: 'regPost' })
+      if(e.key === 'Enter'){
         e.target.value = ''
-        this.props.addMessage(this.state.username, this.state.content)
+        this.props.addMessage(this.state.username, this.state.content, this.state.type)
       }
     }
   }

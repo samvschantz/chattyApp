@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import Chatbar from './Chatbar.jsx';
 import MessageList from './MessageList.jsx';
+import Navbar from './Navbar.jsx'
 
 class App extends Component {
 
@@ -9,25 +10,32 @@ class App extends Component {
     super(props);
     this.state =
             {
-              currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
-              messages: []
+              currentUser: {name: "Anonymous"}, // optional. if currentUser is not defined, it means the user is Anonymous
+              messages: [],
+              numOnline: 0,
             };
   }
 
-  addMessage(username, content) {
-    const newMessage = {id: Date.now(), username, content};
-    const newMessageForServer = JSON.stringify(newMessage)
-    const messages = this.state.messages.concat(newMessage);
+  addMessage(username, content, type, newname) {
+    const newMessage = {id: Date.now(), username, content, type};
+    const newMessageForServer = JSON.stringify(newMessage);
     this.socket.send(newMessageForServer);
-    //this.setState({messages: messages});
   }
 
   componentDidMount(){
     this.socket = new WebSocket("ws://localhost:3001/");
     this.socket.addEventListener('message', (event) => {
       let msgObj = JSON.parse(event.data);
-      console.log(msgObj)
-      this.setState({ messages: this.state.messages.concat(msgObj) });
+      let notifObj = {id:msgObj.id, oldUsername:this.state.currentUser.name, newUsername:msgObj.username}
+      let peopleObj = {numOnline:msgObj.numOnline}
+      if(msgObj.type === 'regPost'){
+        this.setState({ currentUser:{ name:msgObj.username }, messages: this.state.messages.concat(msgObj) });
+      } else if (msgObj.type === 'nameChange'){
+        this.setState({ messages: this.state.messages.concat(notifObj)})
+      } else if (msgObj.type === 'numOnline'){
+        console.log('faihred')
+        console.log(peopleObj.numOnline)
+      }
     });
   }
 
